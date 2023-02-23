@@ -19,7 +19,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ## TODO: containerd needs some work to fix / may need to install from source
 RUN \
-    apk add --no-cache tar && \
     # curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
       # tar xzvf containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
       # mv bin/* /usr/local/bin/ && \
