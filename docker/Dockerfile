@@ -20,14 +20,14 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ## TODO: containerd needs some work to fix / may need to install from source
 RUN \
     apk add --no-cache tar && \
-    #curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
-      #tar xzvf containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
-      #mv bin/* /usr/local/bin/ && \
-      #rm -rf bin && \
+    # curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
+      # tar xzvf containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
+      # mv bin/* /usr/local/bin/ && \
+      # rm -rf bin && \
     curl -LO https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
       tar xvzf helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
       mv linux-${ARCH}/* /usr/local/bin/ && \
-      rmdir linux-${ARCH}/* && \
+      rmdir linux-${ARCH} && \
       chmod 755 /usr/local/bin/helm && \
     curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
     curl -LO https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
@@ -47,7 +47,7 @@ RUN \
       azure-cli==2.45.0 \
       yamllint==1.29.0 && \
     rm -f \
-      containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz \
+      # containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz \
       helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz \
       packer_${PACKER_VERSION}_linux_${ARCH}.zip \
       terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip
