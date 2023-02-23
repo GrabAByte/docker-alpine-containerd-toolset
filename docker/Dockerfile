@@ -23,11 +23,11 @@ RUN \
     curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
       tar xzvf containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz && \
       mv bin/* /usr/local/bin/ && \
-      rmdir bin && \
+      rm -rf bin && \
     curl -LO https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
       tar xvzf helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
       mv linux-${ARCH}/* /usr/local/bin/ && \
-      rmdir linux-${ARCH}/* && \
+      rm -rf linux-${ARCH}/* && \
       chmod 755 /usr/local/bin/helm && \
     curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
     curl -LO https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
