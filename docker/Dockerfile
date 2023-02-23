@@ -40,8 +40,8 @@ RUN \
       unzip terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip && \
       mv terraform /usr/local/bin/terraform && \
       chmod 755 /usr/local/bin/terraform && \
-    apk add --no-cache python3-dev==3.10.10-r0 && \
-    pip3 install -U \
+    apk add --no-cache python3-dev=3.10.10-r0 && \
+    pip3 install --no-cache-dir -U \
       ansible-core==${ANSIBLE_VERSION} \
       awscliv2==2.2.0 \
       azure-cli==2.45.0 \
