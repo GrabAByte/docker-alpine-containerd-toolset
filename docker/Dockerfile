@@ -1,4 +1,4 @@
-FROM grababyte/alpine-base:0.9.1
+FROM grababyte/alpine-base:0.9.2
 
 LABEL devops.grababyte.image.authors="GrabAByte"
 
@@ -11,7 +11,7 @@ ENV K8S_VERSION 1.26.0
 ENV PACKER_VERSION 1.8.6
 ENV TERRAFORM_VERSION 1.3.9
 ENV USER alpine
-ENV PATH "${PATH}:/root/istio-${ISTIO_VERSION}/bin"
+ENV PATH "${PATH}:/home/${USER}/istio-${ISTIO_VERSION}/bin:/home/${USER}/.local/bin"
 
 USER root
 
@@ -40,11 +40,6 @@ RUN \
       mv terraform /usr/local/bin/terraform && \
       chmod 755 /usr/local/bin/terraform && \
     apk add --no-cache python3-dev=3.10.10-r0 && \
-    pip3 install --no-cache-dir -U \
-      ansible-core==${ANSIBLE_VERSION} \
-      awscliv2==2.2.0 \
-      azure-cli==2.45.0 \
-      yamllint==1.29.0 && \
     rm -f \
       # containerd-${CONTAINERD_VERSION}-linux-${ARCH}.tar.gz \
       helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz \
@@ -52,3 +47,9 @@ RUN \
       terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip
 
 USER "${USER}"
+
+RUN pip3 install --no-cache-dir -U \
+      ansible-core==${ANSIBLE_VERSION} \
+      awscliv2==2.2.0 \
+      azure-cli==2.45.0 \
+      yamllint==1.29.0
