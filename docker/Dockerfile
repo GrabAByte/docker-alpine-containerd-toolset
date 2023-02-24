@@ -48,7 +48,8 @@ RUN \
 
 USER "${USER}"
 
-RUN pip3 install --no-cache-dir -U \
+RUN \
+    pip3 install --no-cache-dir --upgrade \
       ansible-core==${ANSIBLE_VERSION} \
       awscliv2==2.2.0 \
       azure-cli==2.45.0 \
