@@ -6,8 +6,6 @@ ENV ARCH amd64
 ENV HELM_VERSION 3.15.0
 ENV ISTIO_VERSION 1.22.0
 ENV K8S_VERSION 1.30.1
-ENV PACKER_VERSION 1.10.3
-ENV TERRAFORM_VERSION 1.4.6
 ENV USER alpine
 ENV PATH "${PATH}:/home/${USER}/istio-${ISTIO_VERSION}/bin:/home/${USER}/.local/bin"
 
@@ -24,20 +22,10 @@ RUN \
     curl -LO https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
     curl -LO https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
       install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
-    curl -LO https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${ARCH}.zip && \
-      unzip packer_${PACKER_VERSION}_linux_${ARCH}.zip && \
-      mv packer /usr/local/bin && \
-      chmod 755 /usr/local/bin/packer && \
-    curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip && \
-      unzip terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip && \
-      mv terraform /usr/local/bin/terraform && \
-      chmod 755 /usr/local/bin/terraform && \
     apk add --no-cache \
-      ansible-core==2.16.1-r0 \
-      aws-cli==2.13.25-r0 && \
-    rm -f \
-      helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz \
-      packer_${PACKER_VERSION}_linux_${ARCH}.zip \
-      terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip
+      aws-cli==2.13.25-r0 \
+      buildkit==0.12.5-r3 \
+      containerd-ctr==1.7.10-r3 && \
+    rm -f helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz
 
 USER "${USER}"
