@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.2.0] - (23-05-2024)
+feat: (3f91d53) Prune to include only containerd specific configurations (#6)
+
 ## [0.1.0] - (23-05-2024)
 feat: (2209eed) Bump the base image and packages to 0.11.0 (#5)
 
