@@ -21,7 +21,7 @@ RUN \
       mv linux-${ARCH}/* /usr/local/bin/ && \
       rmdir linux-${ARCH} && \
       chmod 755 /usr/local/bin/helm && \
-    curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
+    curl -LO https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
     curl -LO https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
       install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     curl -LO https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_${ARCH}.zip && \
