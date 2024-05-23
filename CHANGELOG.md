@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.2.1] - (23-05-2024)
+fix: (ec06456) bump the workflows to latest version of 0.6.4 (#7)
+
 ## [0.2.0] - (23-05-2024)
 feat: (3f91d53) Prune to include only containerd specific configurations (#6)
 
