@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.1.0] - (23-05-2024)
+feat: (2209eed) Bump the base image and packages to 0.11.0 (#5)
+
 ## [0.0.2] - (24-02-2023)
 fix: (1456178) Install pip packages as non-root user (#3)
 
