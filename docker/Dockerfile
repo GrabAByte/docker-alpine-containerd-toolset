@@ -1,3 +1,4 @@
+FROM gcr.io/kaniko-project/executor:debug AS kaniko
 FROM grababyte/alpine-base:0.11.0
 
 LABEL devops.grababyte.image.authors="GrabAByte"
@@ -7,7 +8,13 @@ ENV HELM_VERSION 3.15.0
 ENV ISTIO_VERSION 1.22.0
 ENV K8S_VERSION 1.30.1
 ENV USER alpine
-ENV PATH "${PATH}:/home/${USER}/istio-${ISTIO_VERSION}/bin:/home/${USER}/.local/bin"
+ENV PATH "${PATH}:/home/${USER}/istio-${ISTIO_VERSION}/bin:/home/${USER}/.local/bin:/kaniko"
+
+## kaniko
+COPY --from=kaniko /kaniko/ /kaniko/
+ENV DOCKER_CONFIG /kaniko/.docker/
+ENV DOCKER_CREDENTIAL_GCR_CONFIG /kaniko/.config/gcloud/docker_credential_gcr_config.json
+ENV SSL_CERT_DIR /kaniko/ssl/certs
 
 USER root
 
