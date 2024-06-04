@@ -21,13 +21,13 @@ USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN \
-    curl -LO https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
+    curl -O https://get.helm.sh/helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
       tar xvzf helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz && \
       mv linux-${ARCH}/* /usr/local/bin/ && \
       rmdir linux-${ARCH} && \
       chmod 755 /usr/local/bin/helm && \
-    curl -LO https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
-    curl -LO https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
+    curl -O https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${ARCH} sh - && \
+    curl -O https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
       install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     apk add --no-cache \
       aws-cli==2.13.25-r0 \
