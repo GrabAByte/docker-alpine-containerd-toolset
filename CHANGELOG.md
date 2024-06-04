@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.3.0] - (04-06-2024)
+feat: (7e3f608) Add kaniko installation (#9)
+
 ## [0.2.1] - (23-05-2024)
 fix: (ec06456) bump the workflows to latest version of 0.6.4 (#7)
 
