@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.3.1] - (12-09-2024)
+fix: (8ef0f18) Add MIT License (#10)
+
 ## [0.3.0] - (04-06-2024)
 feat: (7e3f608) Add kaniko installation (#9)
 
