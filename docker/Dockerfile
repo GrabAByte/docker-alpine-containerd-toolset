@@ -30,9 +30,9 @@ RUN \
     curl -O https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl && \
       install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     apk add --no-cache \
-      aws-cli \
-      buildkit \
-      containerd-ctr && \
+      aws-cli==2.22.10-r0 \
+      buildkit==0.18.2-r4 \
+      containerd-ctr==2.0.0-r4 && \
     rm -f helm-v${HELM_VERSION}-linux-${ARCH}.tar.gz
 
 USER "${USER}"
