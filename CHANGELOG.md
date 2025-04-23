@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.4.0] - (23-04-2025)
+feat: (7b3872d) bump base alpine image to 0.12.0 and update dependent packages (#11)
+
 ## [0.3.1] - (12-09-2024)
 fix: (8ef0f18) Add MIT License (#10)
 
